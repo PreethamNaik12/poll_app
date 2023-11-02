@@ -5,6 +5,7 @@ const primary = {
     light: '#424242', // Lighter grey background color
     dark: '#000000', // Black background color
     contrastText: '#ffffff', // White text color
+    back:'#606060'
 };
 
 const secondary = {

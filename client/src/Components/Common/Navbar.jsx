@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
-import { HowToRegRoundedIcon, GoogleIcon } from '../../assets/icons/'
+import {HowToVoteIcon } from '../../assets/icons/'
 import { poll } from '../../assets/images/'
 import { pages } from '../../constants';
 
@@ -118,24 +118,6 @@ function ResponsiveAppBar() {
                     <Box sx={{ display: { xs: 'flex', md: 'none' }, justifyContent: 'center', height: '50px', width: '100%' }}>
                         <img src={poll} alt="" sx={{ width: '100%' }} />
                     </Box>
-                    {/* <Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'flex', md: 'none' },
-                            flexGrow: 1,
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        INCIDENT
-                    </Typography> */}
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
                         {pages.map((page) => (
                             <Link to={page.path} style={{ textDecoration: 'none' }}>
@@ -157,7 +139,7 @@ function ResponsiveAppBar() {
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
-                        <Button variant="contained" startIcon={<GoogleIcon sx={{ display: { xs: 'none', md: 'flex' } }} />}
+                        <Button variant="contained" startIcon={<HowToVoteIcon sx={{ display: { xs: 'none', md: 'flex' } }} />}
 
                             sx={{
                                 color: 'primary.dark',

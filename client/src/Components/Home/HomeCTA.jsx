@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import { UnsubscribeRoundedIcon, InfoRoundedIcon } from '../../assets/icons'
+import { HowToVoteIcon, InfoRoundedIcon } from '../../assets/icons'
 
 
 function CTA() {
@@ -9,24 +9,34 @@ function CTA() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            mt:'2em'
+            mt: '2em'
         }}>
-            <Button variant="contained" color='primary' disableElevation startIcon={<UnsubscribeRoundedIcon />} sx={{
-                padding: '.5em 1.5em',
-                fontSize: '0.9em',
-                mr: '2em'
-            }}>
-                Subscribe
-            </Button>
-            <Link to='/about'>
-                <Button variant="contained" color='whiteBtn' disableElevation startIcon={<InfoRoundedIcon />} sx={{
-                    padding: '.5em 1.5em',
-                    fontSize: '0.9em'
-                }}>
-                    About Us
+            <Link to='/poll'>
+                <Button variant="contained"
+                    color='primary'
+                    disableElevation
+                    startIcon={<HowToVoteIcon />}
+                    sx={{
+                        padding: '.5em 1.5em',
+                        fontSize: '0.9em',
+                        mr: '2em'
+                    }}>
+                    Vote Again
                 </Button>
             </Link>
-        </Box>);
+            <Link to='/stats'>
+                <Button variant="contained"
+                    color='whiteBtn'
+                    disableElevation
+                    startIcon={<InfoRoundedIcon />}
+                    sx={{
+                        padding: '.5em 1.5em',
+                        fontSize: '0.9em'
+                    }}>
+                    See Stats
+                </Button>
+            </Link>
+        </Box >);
 }
 
 export default CTA;

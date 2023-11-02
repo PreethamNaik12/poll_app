@@ -7,7 +7,7 @@ import {
   Routes,
 } from "react-router-dom";
 import { Footer, Navbar, ProgressBar, InitialLoader } from "./Components/"
-import { Home, Events, About, Competitions, FAQ, Sponsers } from './Pages';
+import { Home, Events, About, Poll, PollCasted } from './Pages';
 
 const App = () => {
 
@@ -21,12 +21,10 @@ const App = () => {
           <Routes>
             <Route exact path='/' element={<Home />} />
             <Route exact path='/events' element={<Events />} />
-            <Route exact path='/competitions' element={<Competitions />} />
             <Route exact path='/about' element={<About />} />
-            <Route exact path='/faq' element={<FAQ />} />
-            <Route exact path='/sponsors' element={<Sponsers />} />
-
+            <Route exact path='/poll' element={<Poll />} />
             <Route exact path='/load' element={<InitialLoader />} />
+            <Route exact path='/success' element={<PollCasted />} />
           </Routes>
         </Container>
         <Footer />
