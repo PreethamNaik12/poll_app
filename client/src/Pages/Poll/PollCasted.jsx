@@ -3,6 +3,11 @@ import React from 'react'
 import { HomeCTA } from '../../Components';
 
 const Home = () => {
+
+    React.useEffect(() => {//change th edocument title on load
+        document.title = `Poll App | Voted Succesfully🫡`;//setting the document title dynamically
+    }, []);
+
     return (
         <Box sx={{
             minHeight: '70vh',

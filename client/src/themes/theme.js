@@ -37,9 +37,12 @@ const theme = createTheme({
             },
         },
         h2: {
-            fontSize: '2rem',
+            fontSize: '30px',
             fontWeight: 600,
             lineHeight: 1.3,
+            '@media (min-width:960px)': {
+                fontSize: '50px', // Font size for screens wider than 960px
+            },
         },
         h3: {
             fontSize: '1.8rem',

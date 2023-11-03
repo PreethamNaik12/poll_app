@@ -38,6 +38,29 @@ app.get("/polls", async (req, res) => {
     }
 });
 
+//get poll choices by date
+app.get("/pollChoice", async (req, res) => {
+    try {
+        const pollResults = await pool.query("SELECT submission_date, COUNT(*) FILTER(WHERE vote_choice = true) AS no_of_yes, COUNT(*) FILTER(WHERE vote_choice = false) AS no_of_no FROM pollresp GROUP BY submission_date");
+
+        // Format dates to a more readable format
+        const formattedResults = pollResults.rows.map(result => {
+            return {
+                submission_date: result.submission_date.toLocaleDateString(),
+                no_of_yes: result.no_of_yes,
+                no_of_no: result.no_of_no
+            };
+        });
+
+        res.json(formattedResults);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
+
 
 //get a poll
 

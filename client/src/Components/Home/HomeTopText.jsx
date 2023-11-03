@@ -7,18 +7,18 @@ export function HomeTopText() {
     <Box>
       <Typography variant="h1" sx={{
         textAlign: { xs: 'center', md: 'center' },
-        fontSize: { xs: '40px',  md: '65px' },
+        fontSize: { xs: '40px', md: '65px' },
         fontWeight: 'bold',
       }}>
-        Explore the Unexpected: Where Every Performance Sparks Awe!
+        Welcome to Poll App – Your Hub for Public Opinion! Engage, Explore, and Empower with our Interactive Polls.
       </Typography>
       <Container maxWidth='lg'>
         <Typography variant="h5" sx={{
-          textAlign: {xs: 'left', md: 'center' },
+          textAlign: { xs: 'left', md: 'center' },
           color: 'gray',
           marginTop: '1em'
         }}>
-          Dive into a world where creativity knows no bounds. Incident Festival invites you to witness a diverse array of performances, from electrifying dance and soulful music to hilarious comedy and captivating theatre. Join us in celebrating the limitless power of artistry, where every moment is an extraordinary experience waiting to happen.
+          Explore the power of collective insights with Poll App! Dive into a world of meaningful discussions and diverse perspectives. Our user-friendly platform empowers you to create, participate, and analyze polls effortlessly. Gain valuable insights into public sentiments, spark enlightening conversations, and contribute to a community-driven dialogue. Join us in shaping a more informed and connected world, one poll at a time!
         </Typography>
       </Container>
     </Box>

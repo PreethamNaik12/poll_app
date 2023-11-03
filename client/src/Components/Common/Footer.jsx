@@ -1,9 +1,9 @@
 import React from 'react'
-import { Box, Button, ButtonGroup, Container, Divider, FormControl, IconButton, InputBase, List, ListItem, ListItemText, Paper, Typography } from '@mui/material';
+import { Box, Container, Divider, IconButton, InputBase, List, ListItem, ListItemText, Paper, Typography } from '@mui/material';
 import { poll } from '../../assets/images';
 import { pages } from '../../constants';
 import { Link } from 'react-router-dom';
-import {ManageAccountsIcon, NightsStayIcon, LightModeIcon, CopyrightIcon} from '../../assets/icons/';
+import {ManageAccountsIcon, CopyrightIcon} from '../../assets/icons/';
 
 const Footer = () => {
     return (
@@ -151,16 +151,6 @@ const Footer = () => {
                             <ManageAccountsIcon fontSize="inherit" color='whiteBtn' />
                         </IconButton>
                     </Box>
-                    <ButtonGroup variant="outlined" color='whiteBtn' size='small' aria-label="outlined button group" sx={{
-                        p: '1em', maxHeight:'40px'
-                    }}>
-                        <Button size='small' variant='contained'>
-                            <NightsStayIcon />
-                        </Button>
-                        <Button>
-                            <LightModeIcon />
-                        </Button>
-                    </ButtonGroup>
                 </Container>
             </Container>
         </>

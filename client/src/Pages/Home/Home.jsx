@@ -3,6 +3,11 @@ import React from 'react'
 import { HomeCTA, HomeTopText } from '../../Components';
 
 const Home = () => {
+
+    React.useEffect(() => {//change th edocument title on load
+        document.title = `Poll App | Home🚀`;//setting the document title dynamically
+    }, []);
+
     return (
         <Box sx={{
             minHeight: '70vh',
@@ -15,7 +20,7 @@ const Home = () => {
 
             <HomeCTA />
 
-            <Typography variant="h6" color="gray" sx={{mt:'3em'}}>~ Coming Soon</Typography>
+            <Typography variant="h6" color="gray" sx={{mt:'3em'}}>~ Cast Your Vote Now</Typography>
 
         </Box>
     )

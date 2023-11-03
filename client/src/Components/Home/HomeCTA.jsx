@@ -11,31 +11,32 @@ function CTA() {
             alignItems: 'center',
             mt: '2em'
         }}>
-            <Link to='/poll'>
+            <Link to='/visualize'>
                 <Button variant="contained"
                     color='primary'
                     disableElevation
-                    startIcon={<HowToVoteIcon />}
+                    startIcon={<InfoRoundedIcon />}
                     sx={{
                         padding: '.5em 1.5em',
                         fontSize: '0.9em',
                         mr: '2em'
                     }}>
-                    Vote Again
-                </Button>
-            </Link>
-            <Link to='/stats'>
-                <Button variant="contained"
-                    color='whiteBtn'
-                    disableElevation
-                    startIcon={<InfoRoundedIcon />}
-                    sx={{
-                        padding: '.5em 1.5em',
-                        fontSize: '0.9em'
-                    }}>
                     See Stats
                 </Button>
             </Link>
+            <Link to='/poll'>
+                <Button variant="contained"
+                    color='whiteBtn'
+                    disableElevation
+                    startIcon={<HowToVoteIcon />}
+                    sx={{
+                        padding: '.5em 1.5em',
+                        fontSize: '0.9em',
+                    }}>
+                    Vote
+                </Button>
+            </Link>
+
         </Box >);
 }
 

@@ -7,7 +7,7 @@ import {
   Routes,
 } from "react-router-dom";
 import { Footer, Navbar, ProgressBar, InitialLoader } from "./Components/"
-import { Home, Events, About, Poll, PollCasted } from './Pages';
+import { Home, Events, About, Poll, PollCasted, Table, LineChart, BarChart, Visualize } from './Pages';
 
 const App = () => {
 
@@ -25,6 +25,10 @@ const App = () => {
             <Route exact path='/poll' element={<Poll />} />
             <Route exact path='/load' element={<InitialLoader />} />
             <Route exact path='/success' element={<PollCasted />} />
+            <Route exact path='/table' element={<Table />} />
+            <Route exact path='/chartl' element={<LineChart />} />
+            <Route exact path='/chartb' element={<BarChart />} />
+            <Route exact path='/visualize' element={<Visualize />} />
           </Routes>
         </Container>
         <Footer />
