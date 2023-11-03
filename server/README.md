@@ -161,4 +161,5 @@ Delete a poll by its ID.
 These endpoints allow you to perform CRUD (Create, Read, Update, Delete) operations on the polls in the Poll App database. Ensure to include appropriate request data and handle responses accordingly while interacting with these endpoints.
 
 
-### Congratulations! You have successfully set up the server-side of the Poll App project on your local machine. If you encounter any issues or have questions, please refer to the project's documentation or reach out to the project maintainers for assistance. Happy coding! 🚀
+### Congratulations! You have successfully set up the server-side of the Poll App project on your local machine🤗.
+Happy coding! 🚀
