@@ -1,25 +1,28 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Poll App",
+  "name": "A Poll App",
+  "description": "Engage in polls, express your opinions, and visualize data with the Poll App. Join the conversation now!",
+  "lang": "en-US",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "poll.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "poll.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "poll.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#3f51b5",
+  "background_color": "#ffffff",
+  "apple_touch_icon": "apple-touch-icon.png"
 }

@@ -104,7 +104,7 @@ const Footer = () => {
                             ))}
                         </List>
                     </Box>
-                    <Box sx={{ maxWidth: {md:'10%'} }}>
+                    <Box sx={{ maxWidth: {md:'10%'}, display:{xs:'none', md:'flex'} }}>
                         <img src={poll} alt="logo" width='300px' />
                     </Box>
                 </Container>

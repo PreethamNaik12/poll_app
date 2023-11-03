@@ -72,7 +72,7 @@ export default function BasicTable() {
                     </TableBody>
                 </Table>
             </TableContainer>
-            {isDeployed && <Typography variant="body1" sx={{ bgcolor: '#bf7d7a', p: 2, borderRadius: '10px', mt: '2em' }}>This data has been hardcoded inorder to serve the needs for deployment, works dynamically only in local env for now</Typography>}
+            <Typography variant="body1" sx={{ bgcolor: '#bf7d7a', p: 2, borderRadius: '10px', mt: '2em' }}>This data has been hardcoded inorder to serve the needs for Front-End deployment, works dynamically only in local env for now</Typography>
         </Container>
     );
 }

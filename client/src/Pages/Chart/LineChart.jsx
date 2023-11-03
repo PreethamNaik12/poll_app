@@ -12,8 +12,6 @@ import { dummy2 } from '../../constants';
 
 const LineGraph = () => {
 
-    const isDeployed = process.env.REACT_APP_DEPLOYED === 'true';
-
     const [votes, setVotes] = useState(dummy2);
     const [yeah, setYeah] = React.useState(true);
     const [nah, setNah] = React.useState(true);
@@ -70,7 +68,7 @@ const LineGraph = () => {
                     {yeah && <Line type="monotone" name="YES" dataKey="no_of_yes" stroke="#417a47" activeDot={{ r: 8 }} />}
                     {nah && <Line type="monotone" name="NO" dataKey="no_of_no" stroke="#9a3e2b" activeDot={{ r: 8 }} />}
                 </LineChart>
-                {isDeployed && <Typography variant="body1" sx={{ bgcolor: '#bf7d7a', p: 2, borderRadius: '10px', mt: '2em' }}>This data has been hardcoded inorder to serve the needs for deployment, works dynamically only in local env for now</Typography>}
+                <Typography variant="body1" sx={{ bgcolor: '#bf7d7a', p: 2, borderRadius: '10px', mt: '2em' }}>This data has been hardcoded inorder to serve the needs for Front-End deployment, works dynamically only in local env for now</Typography>
             </Container>
         </>
     );
