@@ -76,8 +76,9 @@ server
 1. **Clone the Repository:**
 
    ```
-   git clone https://github.com/PreethamNaik12/Taghash-Submission
+   git clone [your forked repo url]
    ```
+   Replace `[your forked repo url]` with the actual URL of your Git repository.
 
 2. **Client Setup:**
 
