@@ -139,18 +139,19 @@ function ResponsiveAppBar() {
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
-                        <Button variant="contained" startIcon={<HowToVoteIcon sx={{ display: { xs: 'none', md: 'flex' } }} />}
-
-                            sx={{
-                                color: 'primary.dark',
-                                bgcolor: 'primary.contrastText',
-                                padding: { xs: '0.5em', md: '0.5em 1.5em' },
-                                fontSize: { xs: '0.8rem', md: '0.9rem' },
-                                '&:hover': {
-                                    bgcolor: 'primary.dark',
-                                    color: 'primary.contrastText',
-                                }
-                            }}>Vote</Button>
+                        <Link to='/poll'>
+                            <Button variant="contained" startIcon={<HowToVoteIcon sx={{ display: { xs: 'none', md: 'flex' } }} />}
+                                sx={{
+                                    color: 'primary.dark',
+                                    bgcolor: 'primary.contrastText',
+                                    padding: { xs: '0.5em', md: '0.5em 1.5em' },
+                                    fontSize: { xs: '0.8rem', md: '0.9rem' },
+                                    '&:hover': {
+                                        bgcolor: 'primary.dark',
+                                        color: 'primary.contrastText',
+                                    }
+                                }}>Vote</Button>
+                        </Link>
                     {/* <Tooltip title="Open settings">
                         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                             <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />

@@ -6,7 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Container } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 
 export default function BasicTable() {
     const [votes, setVotes] = React.useState([]);
@@ -32,6 +32,7 @@ export default function BasicTable() {
 
     return (
         <Container maxWidth='lg'>
+            <Typography variant="h2" sx={{ mb: '1em', textAlign: "center" }}> Insights at a Glance: Exploring Poll Data in Detail! 🗂️</Typography>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>

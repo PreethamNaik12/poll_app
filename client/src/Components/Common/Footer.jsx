@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Container, Divider, IconButton, InputBase, List, ListItem, ListItemText, Paper, Typography } from '@mui/material';
 import { poll } from '../../assets/images';
-import { pages } from '../../constants';
+import { pages, FooterContactLinks, FooterDevelopersLinks } from '../../constants';
 import { Link } from 'react-router-dom';
 import {ManageAccountsIcon, CopyrightIcon} from '../../assets/icons/';
 
@@ -73,9 +73,9 @@ const Footer = () => {
                         </List>
                     </Box>
                     <Box>
-                        <Typography variant="h6" sx={{ fontSize: '17px', fontWeight: '500' }}>Quick Links</Typography>
+                        <Typography variant="h6" sx={{ fontSize: '17px', fontWeight: '500' }}>Devlopers' Corner</Typography>
                         <List disablePadding>
-                            {pages.map((page) => (
+                            {FooterDevelopersLinks.map((page) => (
                                 <Link to={page.path} style={{ textDecorationLine: 'none' }}>
                                     <ListItem disablePadding>
                                         <ListItemText primary={page.title} sx={{
@@ -89,9 +89,9 @@ const Footer = () => {
                         </List>
                     </Box>
                     <Box>
-                        <Typography variant="h6" sx={{ fontSize: '17px', fontWeight: '500' }}>Quick Links</Typography>
+                        <Typography variant="h6" sx={{ fontSize: '17px', fontWeight: '500' }}>Contact Me</Typography>
                         <List disablePadding>
-                            {pages.map((page) => (
+                            {FooterContactLinks.map((page) => (
                                 <Link to={page.path} style={{ textDecorationLine: 'none' }}>
                                     <ListItem disablePadding>
                                         <ListItemText primary={page.title} sx={{
@@ -104,38 +104,8 @@ const Footer = () => {
                             ))}
                         </List>
                     </Box>
-                    <Box sx={{ maxWidth: {md:'20%'} }}>
-                        <Typography variant="h6" sx={{ fontSize: '17px', fontWeight: '500' }}>Subscribe to Our Updates</Typography>
-                        <Typography variant="h6" sx={{ fontSize: '14px', fontWeight: '500', color: 'gray' }}>Stay updated on new releases and features, guides, and case studies.</Typography>
-                        <Paper
-                            component="form"
-                            sx={{
-                                p: '0px 4px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                backgroundColor: 'primary.dark',
-                                mt: '1em',
-                                '&:hover': {
-                                    backgroundColor: 'primary.main'
-                                }
-                            }}
-                        >
-                            <InputBase
-                                sx={{
-                                    ml: 1, flex: 1, color: 'primary.contrastText',
-                                }}
-                                placeholder="you@email.com"
-                            />
-                            <Divider sx={{ height: 28, m: 0.5, color: 'gray' }} orientation="vertical" />
-                            <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
-                                <Typography variant="caption" sx={{
-                                    color: 'whitesmoke',
-                                    bgcolor: 'primary.light',
-                                    borderRadius: '5px',
-                                    padding: '2px 5px'
-                                }}>Subscribe</Typography>
-                            </IconButton>
-                        </Paper>
+                    <Box sx={{ maxWidth: {md:'10%'} }}>
+                        <img src={poll} alt="logo" width='300px' />
                     </Box>
                 </Container>
                 <Container sx={{ display: 'flex', justifyContent: 'space-between', mt: '3em' }}>

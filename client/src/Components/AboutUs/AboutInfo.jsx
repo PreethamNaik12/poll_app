@@ -18,22 +18,14 @@ export function AboutInfo({
     <Typography variant="h1" sx={{
       textAlign: 'left',
       color: 'whitesmoke'
-    }}>About Us</Typography>
+    }}>About</Typography>
     <Typography variant="h5" sx={{
       pt: {
         xs: '1em',
         md: '0'
       }
     }}>
-      What started as a small fest with a meagre budget in the 80s now stands as one of the best college festivals in India. Incident is a blend of cultural, social, and musical events that'll surely give the attendees an ecstatic experience. Incident 2023's unique theme, "A Tale of Bards and Knights", is adapted to celebrate this 3-day extravaganza with medieval grandeur.
-    </Typography>
-    <Typography variant="h5" sx={{
-      pt: {
-        xs: '1em',
-        md: '0'
-      }
-    }}>
-      Join us at NITK, the shoreside institute, while we become 'bards' to sing the hymn of this festive splendour. We, the knights of this realm called "Incident" are committed to giving you all a cherishable and splendid experience.
+      At Poll App, we are driven by the belief that meaningful conversations can change the world. Founded on the principles of inclusivity, openness, and respect, our platform is a digital haven where individuals from diverse backgrounds converge to share their thoughts and engage in insightful discussions. We understand the power of dialogue in fostering empathy, breaking down barriers, and inspiring positive change. Our mission is to create a space where every voice is valued, where ideas flow freely, and where collective wisdom leads to innovative solutions. With a passionate team dedicated to nurturing this global conversation, we invite you to be a part of our community. Together, let's amplify voices, challenge perspectives, and transform conversations into actions that shape a better, more connected future.
     </Typography>
   </Box>
     <Box sx={{

@@ -11,13 +11,14 @@ const Home = () => {
     return (
         <Box sx={{
             minHeight: '70vh',
-            marginTop: { xs: '1em', md: '4em' },
+            marginTop: { xs: '1em', md: '0em' },
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center'
+            alignItems: 'center',
+            justifyContent:'center'
         }}>
             <Box>
-                <Typography variant="h1" sx={{
+                <Typography variant="h2" sx={{
                     textAlign: { xs: 'center', md: 'center' },
                     fontSize: { xs: '40px', md: '65px' },
                     fontWeight: 'bold',
