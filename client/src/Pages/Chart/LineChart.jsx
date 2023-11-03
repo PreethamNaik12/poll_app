@@ -8,19 +8,21 @@ import {
     CartesianGrid,
     Legend
 } from "recharts";
+import { dummy2 } from '../../constants';
 
 const LineGraph = () => {
-    const [votes, setVotes] = useState([]);
+
+    const isDeployed = process.env.REACT_APP_DEPLOYED === 'true';
+
+    const [votes, setVotes] = useState(dummy2);
     const [yeah, setYeah] = React.useState(true);
     const [nah, setNah] = React.useState(true);
 
     const handleYes = () => {
         setYeah(!yeah);
-        console.log('yeah', yeah);
     }
     const handleNo = () => {
         setNah(!nah);
-        console.log('nah', nah);
     }
 
     useEffect(() => {
@@ -40,8 +42,6 @@ const LineGraph = () => {
     React.useEffect(() => {//change th edocument title on load
         document.title = `Poll App | Visualize with Line Graph📈`;//setting the document title dynamically
     }, []);
-
-    console.log(votes);
 
     return (
         <>
@@ -70,6 +70,7 @@ const LineGraph = () => {
                     {yeah && <Line type="monotone" name="YES" dataKey="no_of_yes" stroke="#417a47" activeDot={{ r: 8 }} />}
                     {nah && <Line type="monotone" name="NO" dataKey="no_of_no" stroke="#9a3e2b" activeDot={{ r: 8 }} />}
                 </LineChart>
+                {isDeployed && <Typography variant="body1" sx={{ bgcolor: '#bf7d7a', p: 2, borderRadius: '10px', mt: '2em' }}>This data has been hardcoded inorder to serve the needs for deployment, works dynamically only in local env for now</Typography>}
             </Container>
         </>
     );

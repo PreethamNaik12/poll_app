@@ -6,10 +6,14 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Box, Container, Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
+import { dummy } from '../../constants';
 
 export default function BasicTable() {
-    const [votes, setVotes] = React.useState([]);
+
+    const isDeployed = process.env.REACT_APP_DEPLOYED === 'true';
+
+    const [votes, setVotes] = React.useState(dummy);
 
     const getTodos = async () => {
         try {
@@ -46,7 +50,7 @@ export default function BasicTable() {
                     <TableBody>
                         {votes.map((vote) => {
                             function beautifyDateTime(dateString) {
-                                const options = { year: 'numeric', month: 'long', day: 'numeric'};
+                                const options = { year: 'numeric', month: 'long', day: 'numeric' };
                                 const formattedDate = new Date(dateString).toLocaleDateString('en-US', options);
                                 return formattedDate;
                             }
@@ -68,6 +72,7 @@ export default function BasicTable() {
                     </TableBody>
                 </Table>
             </TableContainer>
+            {isDeployed && <Typography variant="body1" sx={{ bgcolor: '#bf7d7a', p: 2, borderRadius: '10px', mt: '2em' }}>This data has been hardcoded inorder to serve the needs for deployment, works dynamically only in local env for now</Typography>}
         </Container>
     );
 }

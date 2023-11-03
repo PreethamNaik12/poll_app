@@ -1,5 +1,5 @@
 import { Box, Container, FormControlLabel, Switch, Typography } from '@mui/material';
-import React, { PureComponent } from 'react';
+import React from 'react';
 import {
     BarChart,
     Bar,
@@ -9,54 +9,13 @@ import {
     Tooltip,
     Legend
 } from "recharts";
-
-const data = [
-    {
-        name: "Page A",
-        uv: 4000,
-        pv: 2400,
-        amt: 2400
-    },
-    {
-        name: "Page B",
-        uv: 3000,
-        pv: 1398,
-        amt: 2210
-    },
-    {
-        name: "Page C",
-        uv: 2000,
-        pv: 9800,
-        amt: 2290
-    },
-    {
-        name: "Page D",
-        uv: 2780,
-        pv: 3908,
-        amt: 2000
-    },
-    {
-        name: "Page E",
-        uv: 1890,
-        pv: 4800,
-        amt: 2181
-    },
-    {
-        name: "Page F",
-        uv: 2390,
-        pv: 3800,
-        amt: 2500
-    },
-    {
-        name: "Page G",
-        uv: 3490,
-        pv: 4300,
-        amt: 2100
-    }
-];
+import { dummy2 } from '../../constants';
 
 export default function BarGraph() {
-    const [votes, setVotes] = React.useState([]);
+
+    const isDeployed = process.env.REACT_APP_DEPLOYED === 'true';
+
+    const [votes, setVotes] = React.useState(dummy2);
     const [yeah, setYeah] = React.useState(true);
     const [nah, setNah] = React.useState(true);
 
@@ -114,6 +73,7 @@ export default function BarGraph() {
                     {yeah && <Bar dataKey="no_of_yes" fill="#417a47" />}
                     {nah && <Bar dataKey="no_of_no" fill="#9a3e2b" />}
                 </BarChart>
+                {isDeployed && <Typography variant="body1" sx={{ bgcolor: '#bf7d7a', p: 2, borderRadius: '10px', mt: '2em' }}>This data has been hardcoded inorder to serve the needs for deployment, works dynamically only in local env for now</Typography>}
             </Container>
         </>
     );
