@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require("cors");
 const pool = require("./db");
+const dotenv = require('dotenv');
 
 //middleware
 app.use(cors());
@@ -59,8 +60,6 @@ app.get("/pollChoice", async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-
-
 
 
 //get a poll
@@ -129,5 +128,5 @@ app.delete("/polls/:id", async (req, res) => {
 
 
 app.listen(PORT, () => {
-    console.log("server has started on port 5000");
+    console.log(`server has started on port ${PORT}`);
 });

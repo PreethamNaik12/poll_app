@@ -7,13 +7,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Container, Typography } from '@mui/material';
-import { dummy } from '../../constants';
 
 export default function BasicTable() {
 
     const isDeployed = process.env.REACT_APP_DEPLOYED === 'true';
 
-    const [votes, setVotes] = React.useState(dummy);
+    const [votes, setVotes] = React.useState([]);
 
     const getTodos = async () => {
         try {
@@ -72,7 +71,6 @@ export default function BasicTable() {
                     </TableBody>
                 </Table>
             </TableContainer>
-            <Typography variant="body1" sx={{ bgcolor: '#bf7d7a', p: 2, borderRadius: '10px', mt: '2em' }}>This data has been hardcoded inorder to serve the needs for Front-End deployment, works dynamically only in local env for now</Typography>
         </Container>
     );
 }

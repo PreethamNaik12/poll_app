@@ -9,11 +9,10 @@ import {
     Tooltip,
     Legend
 } from "recharts";
-import { dummy2 } from '../../constants';
 
 export default function BarGraph() {
 
-    const [votes, setVotes] = React.useState(dummy2);
+    const [votes, setVotes] = React.useState([]);
     const [yeah, setYeah] = React.useState(true);
     const [nah, setNah] = React.useState(true);
 
@@ -71,7 +70,6 @@ export default function BarGraph() {
                     {yeah && <Bar dataKey="no_of_yes" fill="#417a47" />}
                     {nah && <Bar dataKey="no_of_no" fill="#9a3e2b" />}
                 </BarChart>
-                <Typography variant="body1" sx={{ bgcolor: '#bf7d7a', p: 2, borderRadius: '10px', mt: '2em' }}>This data has been hardcoded inorder to serve the needs for Front-End  deployment, works dynamically only in local env for now</Typography>
             </Container>
         </>
     );
