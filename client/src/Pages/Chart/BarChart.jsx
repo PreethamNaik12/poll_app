@@ -11,6 +11,7 @@ import {
 } from "recharts";
 
 export default function BarGraph() {
+    const api_url = process.env.REACT_APP_API_URL;
 
     const [votes, setVotes] = React.useState([]);
     const [yeah, setYeah] = React.useState(true);
@@ -27,7 +28,7 @@ export default function BarGraph() {
     React.useEffect(() => {
         const getVotes = async () => {
             try {
-                const response = await fetch("http://localhost:5000/pollChoice");
+                const response = await fetch(`${api_url}/pollChoice`);
                 const jsonData = await response.json();
                 setVotes(jsonData);
             } catch (err) {

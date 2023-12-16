@@ -10,6 +10,7 @@ import {
 } from "recharts";
 
 const LineGraph = () => {
+    const api_url = process.env.REACT_APP_API_URL;
 
     const [votes, setVotes] = useState([]);
     const [yeah, setYeah] = React.useState(true);
@@ -25,7 +26,7 @@ const LineGraph = () => {
     useEffect(() => {
         const getVotes = async () => {
             try {
-                const response = await fetch("http://localhost:5000/pollChoice");
+                const response = await fetch(`${api_url}/pollChoice`);
                 const jsonData = await response.json();
                 setVotes(jsonData);
             } catch (err) {

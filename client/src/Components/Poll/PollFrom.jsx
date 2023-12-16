@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Box, Button, Container, FormControl, InputLabel, MenuItem, Select, Typography } from '@mui/material'
 import TextField from '@mui/material/TextField';
 import { format } from 'date-fns';
-import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { HowToVoteIcon } from '../../assets/icons'
 import {VoteSubmitLoader} from '../../Components/'
@@ -10,12 +9,12 @@ import { useNavigate } from 'react-router-dom';
 
 
 const PollFrom = () => {
+    const api_url = process.env.REACT_APP_API_URL;
+
     const navigate = useNavigate();
 
     const [userName, setUserName] = useState('')//name state
-    const [selected, setSelected] = useState();//date state
-    
-    let footer = selected ? (<Typography variant='h3' sx={{textAlign:'center'}}>You picked <b>{format(selected, 'PP')}</b>.</Typography>) : (<Typography variant='h3' sx={{textAlign:'center'}}>Please pick a day.</Typography>);//render date as it is selected
+
     
     const [choice, setChoice] = React.useState('');//vote choice state
     const handleChoice = (event) => {
@@ -29,7 +28,7 @@ const PollFrom = () => {
         setIsVoting(true);
         try {
             const body = { userName, choice };
-            const response = await fetch("http://localhost:5000/ormpoll", {
+            await fetch(`${api_url}/ormpoll`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)

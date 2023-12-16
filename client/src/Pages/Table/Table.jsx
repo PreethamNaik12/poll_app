@@ -10,12 +10,9 @@ import Paper from '@mui/material/Paper';
 import { Container, Typography } from '@mui/material';
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from 'axios';
-import InitialLoader from '../../Components/Loaders/TableLoader';
-import TableLoader from '../../Components/Loaders/TableLoader';
-
 export default function BasicTable() {
 
-    const isDeployed = process.env.REACT_APP_DEPLOYED === 'true';
+    const api_url = process.env.REACT_APP_API_URL;
 
     const [votes, setVotes] = useState([]);
     const [rows, setRows] = useState(0);
@@ -24,7 +21,7 @@ export default function BasicTable() {
     const [remaining, setRemaining] = useState(0)
 
     const getTodos = async () => {
-        const url = 'http://localhost:5000/ormpoll/try/1';
+        const url = `${api_url}/ormpoll/try/1`;
         try {
             const response = await axios.get(url);
             const jsonData = response.data;
@@ -53,7 +50,7 @@ export default function BasicTable() {
         setLoading(true);
         setRows(rows + 10);
 
-        let url = `http://localhost:5000/ormpoll/try/${rows}`;
+        let url = `https://taghash-poll.onrender.com/ormpoll/try/${rows}`;
         const newresponse = await axios.get(url);
         const jsondata = newresponse.data;
         const newVotes = votes;
