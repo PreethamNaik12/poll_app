@@ -9,11 +9,11 @@ import {
     Tooltip,
     Legend
 } from "recharts";
-import { dummy2 } from '../../constants';
 
 export default function BarGraph() {
+    const api_url = process.env.REACT_APP_API_URL;
 
-    const [votes, setVotes] = React.useState(dummy2);
+    const [votes, setVotes] = React.useState([]);
     const [yeah, setYeah] = React.useState(true);
     const [nah, setNah] = React.useState(true);
 
@@ -28,7 +28,7 @@ export default function BarGraph() {
     React.useEffect(() => {
         const getVotes = async () => {
             try {
-                const response = await fetch("http://localhost:5000/pollChoice");
+                const response = await fetch(`${api_url}/pollChoice`);
                 const jsonData = await response.json();
                 setVotes(jsonData);
             } catch (err) {
@@ -71,7 +71,6 @@ export default function BarGraph() {
                     {yeah && <Bar dataKey="no_of_yes" fill="#417a47" />}
                     {nah && <Bar dataKey="no_of_no" fill="#9a3e2b" />}
                 </BarChart>
-                <Typography variant="body1" sx={{ bgcolor: '#bf7d7a', p: 2, borderRadius: '10px', mt: '2em' }}>This data has been hardcoded inorder to serve the needs for Front-End  deployment, works dynamically only in local env for now</Typography>
             </Container>
         </>
     );
