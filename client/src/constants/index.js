@@ -5,7 +5,6 @@ export const pages = [
     { title: 'Line Graph', path: '/chartl' },
     { title: 'Bar Graph', path: '/chartb' },
     { title: 'about', path: '/about' },
-    { title: 'about', path: '/about' },
 ];
 
 export const FooterContactLinks = [

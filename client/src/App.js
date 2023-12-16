@@ -6,7 +6,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import { Footer, Navbar, ProgressBar, InitialLoader } from "./Components/"
+import { Footer, Navbar, ProgressBar } from "./Components/"
 import { Home, Events, About, Poll, PollCasted, Table, LineChart, BarChart, Visualize } from './Pages';
 
 const App = () => {
@@ -23,7 +23,6 @@ const App = () => {
             <Route exact path='/events' element={<Events />} />
             <Route exact path='/about' element={<About />} />
             <Route exact path='/poll' element={<Poll />} />
-            <Route exact path='/load' element={<InitialLoader />} />
             <Route exact path='/success' element={<PollCasted />} />
             <Route exact path='/table' element={<Table />} />
             <Route exact path='/chartl' element={<LineChart />} />

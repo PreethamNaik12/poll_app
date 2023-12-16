@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { ORM_Poll } = require('../models'); // Adjust the path based on your project structure
+const { ORM_Poll, Sequelize } = require('../models'); // Adjust the path based on your project structure
+const { INTEGER } = require('sequelize');
 
 // Create a new poll
 router.post('/', async (req, res) => {
@@ -22,6 +23,56 @@ router.get('/', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');
+    }
+});
+
+router.get('/try/:num', async (req, res) => {
+    const num = Number(req.params.num);
+    try {
+        const count = await ORM_Poll.count();
+
+        const remaining = await ORM_Poll.count({
+            where: {
+                id: {
+                    [Sequelize.Op.gte]: num + 10, // Using less than or equal to (lte) operator
+                },
+            },
+        });
+
+        console.log(remaining);
+
+        if (remaining < 10) {
+            const limitedUsers = await ORM_Poll.findAll({
+                where: {
+                    id: {
+                        [Sequelize.Op.gte]: num // Using greater than or equal to (gte) operator
+                    },
+                },
+            });
+            res.json({ limitedUsers, count, nextPage: false, remaining: 0 });
+        }
+
+        else {
+            const limitedUsers = await ORM_Poll.findAll({
+                where: {
+                    id: {
+                        [Sequelize.Op.gte]: num, // Using greater than or equal to (gte) operator
+                        [Sequelize.Op.lt]: num + 10, // Using less than or equal to (lte) operator
+                    },
+                },
+            });
+
+            let nextPage = false;
+            if (remaining > 0) {
+                nextPage = true;
+            }
+
+            res.json({ limitedUsers, count, nextPage, remaining });
+        }
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 });
 
