@@ -39,8 +39,6 @@ router.get('/try/:num', async (req, res) => {
             },
         });
 
-        console.log(remaining);
-
         if (remaining < 10) {
             const limitedUsers = await ORM_Poll.findAll({
                 where: {
