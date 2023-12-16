@@ -1,0 +1,30 @@
+{
+  "development": {
+    "username": "preetham",
+    "password": "rfsMa95sf53uOjXfMZf8IYUq8dFvaWwd",
+    "database": "orm_polldata",
+    "host": "dpg-ckp1t5s1tcps7380i7m0-a.oregon-postgres.render.com",
+    "port": 5432,
+    "dialect": "postgres",
+    "ssl": true,
+    "dialectOptions": {
+      "ssl": {
+        "require": true
+      }
+    }
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
