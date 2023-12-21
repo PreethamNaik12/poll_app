@@ -15,6 +15,7 @@ app.use("/ormpoll", orm_poll); //use orm_poll.js file for orm_poll route
 
 //get poll choices by date
 app.get("/pollChoice", async (req, res) => {
+    console.log("inside the pollChoice route");
     try {
         const pollResults = await pool.query("SELECT submission_date, COUNT(*) FILTER(WHERE vote_choice = true) AS no_of_yes, COUNT(*) FILTER(WHERE vote_choice = false) AS no_of_no FROM pollresp GROUP BY submission_date");
 

@@ -1,4 +1,4 @@
-import { Box, Container, FormControlLabel, Switch, Typography } from '@mui/material';
+import { Box, Button, Container, FormControlLabel, Switch, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 import {
     BarChart,
@@ -46,13 +46,13 @@ export default function BarGraph() {
 
     return (
         <>
-            <button onClick={handleRefresh}>Refresh</button>
 
             <Typography variant="h2" sx={{ mb: '1em', textAlign: "center" }}>📊🚀Visualizing Poll Results with Dynamic Bar Graphs! 🗳️📊</Typography>
             <Box sx={{ backgroundColor: 'primary.main', display: 'flex', justifyContent: 'center', p: 2, m: 2, borderRadius: '20px' }}>
                 <Typography variant="h4" sx={{ mx: '2em' }}>Filters</Typography>
                 <FormControlLabel control={<Switch defaultChecked color='secondary' />} label="YES" onChange={handleYes} value={yeah} />
                 <FormControlLabel control={<Switch defaultChecked color='secondary' />} label="NO" onChange={handleNo} value={nah} />
+                <Button variant='contained' color='whiteBtn' onClick={handleRefresh}>Refresh</Button>
             </Box>
             <Container maxWidth='xl' sx={{ display: 'grid', placeItems: 'center', overflowX: 'scroll' }}>
                 <BarChart

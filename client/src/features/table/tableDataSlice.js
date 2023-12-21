@@ -1,14 +1,15 @@
 // dataSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import api from './graphAPI'; // Import your API functions
+import api from './tableAPI'; // Import your API functions
 
-const graphDataSlice = createSlice({
-    name: 'data',
+const tableDataSlice = createSlice({
+    name: 'tableData',
     initialState: {
         // Initial state here
         data: [],
         isLoading: false,
+        nextPage: false,
         error: null,
     },
     reducers: {
@@ -18,7 +19,9 @@ const graphDataSlice = createSlice({
         },
         fetchDataSuccess: (state, action) => {
             state.isLoading = false;
-            state.data = action.payload;
+            state.nextPage = action.payload.nextPage;
+            const newData = [...state.data, ...action.payload.limitedUsers];
+            state.data = newData;
         },
         fetchDataFailure: (state, action) => {
             state.isLoading = false;
@@ -27,15 +30,19 @@ const graphDataSlice = createSlice({
     },
 });
 
-export const fetchData = createAsyncThunk('data/fetchData', async (_, { dispatch }) => {
+export const fetchData = createAsyncThunk('tableData/fetchData', async (offset, { dispatch }) => {
+    console.log(offset, "inside the thunk function");
     try {
         dispatch(fetchDataStart());
-        const data = await api.getData(); // Call your API function here
+
+        const data = await api.getData(offset); // Call your API function here
+        console.log(data, "data inside the thunk function");
+
         dispatch(fetchDataSuccess(data));
     } catch (error) {
         dispatch(fetchDataFailure(error.message));
     }
 });
 
-export const { fetchDataStart, fetchDataSuccess, fetchDataFailure } = graphDataSlice.actions;
-export default graphDataSlice.reducer;
+export const { fetchDataStart, fetchDataSuccess, fetchDataFailure } = tableDataSlice.actions;
+export default tableDataSlice.reducer;
