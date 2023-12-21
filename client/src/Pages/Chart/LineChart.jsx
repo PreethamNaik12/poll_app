@@ -1,4 +1,4 @@
-import { Box, Container, FormControlLabel, Switch, Typography } from '@mui/material';
+import { Box, Button, Container, FormControlLabel, Switch, Typography } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -26,6 +26,10 @@ const LineGraph = () => {
         }
     }, [dispatch, data]);
 
+    const handleRefresh = () => {
+        dispatch(fetchData());
+    };
+
     const handleYes = () => {
         setYeah(!yeah); // Toggle "yeah" switch state
     }
@@ -47,6 +51,7 @@ const LineGraph = () => {
                 <Typography variant="h4" sx={{ mx: '2em' }}>Filters</Typography>
                 <FormControlLabel control={<Switch defaultChecked color='secondary' />} label="YES" onChange={handleYes} value={yeah} />
                 <FormControlLabel control={<Switch defaultChecked color='secondary' />} label="NO" onChange={handleNo} value={nah} />
+                <Button variant='contained' color='whiteBtn' onClick={handleRefresh}>Refresh</Button>
             </Box>
             
             {/* Chart container */}
