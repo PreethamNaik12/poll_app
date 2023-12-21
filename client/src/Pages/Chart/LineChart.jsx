@@ -1,5 +1,6 @@
 import { Box, Container, FormControlLabel, Switch, Typography } from '@mui/material';
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
     LineChart,
     Line,
@@ -8,52 +9,52 @@ import {
     CartesianGrid,
     Legend
 } from "recharts";
+import { fetchData } from '../../features/graphData/graphDataSlice';
 
 const LineGraph = () => {
-    const api_url = process.env.REACT_APP_API_URL;
+    const [yeah, setYeah] = useState(true); // State for "yeah" switch
+    const [nah, setNah] = useState(true); // State for "nah" switch
 
-    const [votes, setVotes] = useState([]);
-    const [yeah, setYeah] = React.useState(true);
-    const [nah, setNah] = React.useState(true);
-
-    const handleYes = () => {
-        setYeah(!yeah);
-    }
-    const handleNo = () => {
-        setNah(!nah);
-    }
+    const dispatch = useDispatch();
+    const { data, isLoading, error } = useSelector((state) => state.graph);
 
     useEffect(() => {
-        const getVotes = async () => {
-            try {
-                const response = await fetch(`${api_url}/pollChoice`);
-                const jsonData = await response.json();
-                setVotes(jsonData);
-            } catch (err) {
-                console.error(err.message);
-            }
-        };
+        // Check if data is already present in the store
+        if (!data.length) {
+            // If not present, fetch the data
+            dispatch(fetchData());
+        }
+    }, [dispatch, data]);
 
-        getVotes();
-    }, []);
+    const handleYes = () => {
+        setYeah(!yeah); // Toggle "yeah" switch state
+    }
+    const handleNo = () => {
+        setNah(!nah); // Toggle "nah" switch state
+    }
 
-    React.useEffect(() => {//change th edocument title on load
-        document.title = `Poll App | Visualize with Line Graph📈`;//setting the document title dynamically
+    React.useEffect(() => {
+        document.title = `Poll App | Visualize with Line Graph📈`; // Set the document title dynamically
     }, []);
 
     return (
         <>
+            {/* Page title */}
             <Typography variant="h2" sx={{ mb: '1em', textAlign: 'center' }}>📈✨ Explore Public Sentiments: Unveiling Poll Results Through Stunning Line Graphs! 🗳️🎉</Typography>
+            
+            {/* Filters */}
             <Box sx={{ backgroundColor: 'primary.main', display: 'flex', justifyContent: 'center', p: 2, m: 2, borderRadius: '20px' }}>
                 <Typography variant="h4" sx={{ mx: '2em' }}>Filters</Typography>
                 <FormControlLabel control={<Switch defaultChecked color='secondary' />} label="YES" onChange={handleYes} value={yeah} />
                 <FormControlLabel control={<Switch defaultChecked color='secondary' />} label="NO" onChange={handleNo} value={nah} />
             </Box>
+            
+            {/* Chart container */}
             <Container maxWidth='xl' sx={{ display: 'grid', placeItems: 'center', overflowX: 'auto' }}>
                 <LineChart
                     width={700}
                     height={500}
-                    data={votes}
+                    data={data}
                     margin={{
                         top: 5,
                         right: 30,

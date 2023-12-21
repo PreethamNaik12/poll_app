@@ -1,5 +1,5 @@
 import { Box, Container, FormControlLabel, Switch, Typography } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     BarChart,
     Bar,
@@ -10,41 +10,44 @@ import {
     Legend
 } from "recharts";
 
-export default function BarGraph() {
-    const api_url = process.env.REACT_APP_API_URL;
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchData } from '../../features/graphData/graphDataSlice';
 
-    const [votes, setVotes] = React.useState([]);
-    const [yeah, setYeah] = React.useState(true);
-    const [nah, setNah] = React.useState(true);
+export default function BarGraph() {
+    const [yeah, setYeah] = React.useState(true); // State for "YES" filter
+    const [nah, setNah] = React.useState(true); // State for "NO" filter
+
+    const dispatch = useDispatch();
+    const { data, isLoading, error } = useSelector((state) => state.graph);
+
+    useEffect(() => {
+        // Check if data is already present in the store
+        if (!data.length) {
+            // If not present, fetch the data
+            dispatch(fetchData());
+        }
+    }, [dispatch, data]);
+
+    const handleRefresh = () => {
+        dispatch(fetchData());
+    };
 
     const handleYes = () => {
-        setYeah(!yeah);
+        setYeah(!yeah); // Toggle "YES" filter
     }
 
     const handleNo = () => {
-        setNah(!nah);
+        setNah(!nah); // Toggle "NO" filter
     }
 
     React.useEffect(() => {
-        const getVotes = async () => {
-            try {
-                const response = await fetch(`${api_url}/pollChoice`);
-                const jsonData = await response.json();
-                setVotes(jsonData);
-            } catch (err) {
-                console.error(err.message);
-            }
-        };
-
-        getVotes();
-    }, []);
-
-    React.useEffect(() => {//change th edocument title on load
-        document.title = `Poll App | Visualize with Bar Graph📊`;//setting the document title dynamically
+        document.title = `Poll App | Visualize with Bar Graph📊`; // Set the document title dynamically
     }, []);
 
     return (
         <>
+            <button onClick={handleRefresh}>Refresh</button>
+
             <Typography variant="h2" sx={{ mb: '1em', textAlign: "center" }}>📊🚀Visualizing Poll Results with Dynamic Bar Graphs! 🗳️📊</Typography>
             <Box sx={{ backgroundColor: 'primary.main', display: 'flex', justifyContent: 'center', p: 2, m: 2, borderRadius: '20px' }}>
                 <Typography variant="h4" sx={{ mx: '2em' }}>Filters</Typography>
@@ -55,7 +58,7 @@ export default function BarGraph() {
                 <BarChart
                     width={1000}
                     height={500}
-                    data={votes}
+                    data={data}
                     margin={{
                         top: 5,
                         right: 30,
@@ -68,8 +71,8 @@ export default function BarGraph() {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    {yeah && <Bar dataKey="no_of_yes" fill="#417a47" />}
-                    {nah && <Bar dataKey="no_of_no" fill="#9a3e2b" />}
+                    {yeah && <Bar dataKey="no_of_yes" fill="#417a47" />} {/*Render the "YES" bar if the filter is enabled*/}
+                    {nah && <Bar dataKey="no_of_no" fill="#9a3e2b" />}  {/*Render the "NO" bar if the filter is enabled*/}
                 </BarChart>
             </Container>
         </>
