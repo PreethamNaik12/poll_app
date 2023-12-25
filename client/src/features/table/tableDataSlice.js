@@ -31,12 +31,10 @@ const tableDataSlice = createSlice({
 });
 
 export const fetchData = createAsyncThunk('tableData/fetchData', async (offset, { dispatch }) => {
-    console.log(offset, "inside the thunk function");
     try {
         dispatch(fetchDataStart());
 
         const data = await api.getData(offset); // Call your API function here
-        console.log(data, "data inside the thunk function");
 
         dispatch(fetchDataSuccess(data));
     } catch (error) {

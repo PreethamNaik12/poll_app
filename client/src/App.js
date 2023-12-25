@@ -6,7 +6,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import { Footer, Navbar, ProgressBar } from "./Components/"
+import { Footer, Navbar, ProgressBar, StatusBar } from "./Components/"
 import { Home, Events, About, Poll, PollCasted, Table, LineChart, BarChart, Visualize } from './Pages';
 
 const App = () => {
@@ -14,9 +14,10 @@ const App = () => {
 
   return (
     <Router>
-      <ProgressBar duration={"0.2"} height="3.5" bgcolor="#ffffff" />
+      <ProgressBar duration={0.2} height={3} bgcolor='#ffffff' color={'#ffffff'} />
       <Box sx={{ backgroundColor: "primary.dark", color: 'primary.contrastText' }}>
         <Navbar />
+        <StatusBar />
         <Container maxWidth='xl' sx={{ padding: { xs: '0.5em', md: '2em' } }}>
           <Routes>
             <Route exact path='/' element={<Home />} />
