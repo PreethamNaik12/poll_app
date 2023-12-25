@@ -60,7 +60,7 @@ const Footer = () => {
                         <Typography variant="h6" sx={{ fontSize: '17px', fontWeight: '500' }}>Quick Links</Typography>
                         <List disablePadding>
                             {pages.map((page) => (
-                                <Link to={page.path} style={{ textDecorationLine: 'none' }}>
+                                <Link  key={page.path} to={page.path} style={{ textDecorationLine: 'none' }}>
                                     <ListItem disablePadding>
                                         <ListItemText primary={page.title} sx={{
                                             textTransform: 'capitalize',
@@ -76,7 +76,7 @@ const Footer = () => {
                         <Typography variant="h6" sx={{ fontSize: '17px', fontWeight: '500' }}>Devlopers' Corner</Typography>
                         <List disablePadding>
                             {FooterDevelopersLinks.map((page) => (
-                                <Link to={page.path} style={{ textDecorationLine: 'none' }}>
+                                <Link  key={page.path} to={page.path} style={{ textDecorationLine: 'none' }}>
                                     <ListItem disablePadding>
                                         <ListItemText primary={page.title} sx={{
                                             textTransform: 'capitalize',
@@ -92,7 +92,7 @@ const Footer = () => {
                         <Typography variant="h6" sx={{ fontSize: '17px', fontWeight: '500' }}>Contact Me</Typography>
                         <List disablePadding>
                             {FooterContactLinks.map((page) => (
-                                <Link to={page.path} style={{ textDecorationLine: 'none' }}>
+                                <Link  key={page.path} to={page.path} style={{ textDecorationLine: 'none' }}>
                                     <ListItem disablePadding>
                                         <ListItemText primary={page.title} sx={{
                                             textTransform: 'capitalize',

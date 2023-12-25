@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Box, Button, Container, FormControl, InputLabel, MenuItem, Select, Typography } from '@mui/material'
 import TextField from '@mui/material/TextField';
-import { format } from 'date-fns';
 import 'react-day-picker/dist/style.css';
 import { HowToVoteIcon } from '../../assets/icons'
-import {VoteSubmitLoader} from '../../Components/'
+import { VoteSubmitLoader } from '../../Components/'
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 const PollFrom = () => {
@@ -15,26 +15,28 @@ const PollFrom = () => {
 
     const [userName, setUserName] = useState('')//name state
 
-    
+
     const [choice, setChoice] = React.useState('');//vote choice state
     const handleChoice = (event) => {
         setChoice(event.target.value);
     };
 
     const [isVoting, setIsVoting] = useState(false);
-    
+
     const onSubmitVote = async (e) => {
         e.preventDefault();
         setIsVoting(true);
         try {
-            const body = { userName, choice };
-            await fetch(`${api_url}/ormpoll`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(body)
-            });
-            // console.log(JSON.stringify(body));
-            // console.log(response);
+
+            const data = { userName, choice }
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+
+            await axios.post(`${api_url}/ormpoll`, data, config )
+
             setIsVoting(false);
             navigate('/success');
         } catch (err) {
@@ -74,13 +76,13 @@ const PollFrom = () => {
                 </FormControl>
 
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                    <Button 
-                    color='whiteBtn' 
-                    variant="contained" 
-                    startIcon={isVoting ? <VoteSubmitLoader /> : <HowToVoteIcon />} 
-                    disableElevation 
-                    onClick={onSubmitVote}
-                    disabled={isVoting}
+                    <Button
+                        color='whiteBtn'
+                        variant="contained"
+                        startIcon={isVoting ? <VoteSubmitLoader /> : <HowToVoteIcon />}
+                        disableElevation
+                        onClick={onSubmitVote}
+                        disabled={isVoting}
                     >
                         Submit
                     </Button>

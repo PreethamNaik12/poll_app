@@ -9,7 +9,6 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Box, Button, Container, Typography } from '@mui/material';
 import InfiniteScroll from "react-infinite-scroll-component";
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchData } from '../../features/table/tableDataSlice';
 
@@ -27,7 +26,6 @@ export default function BasicTable() {
                 // If not present, fetch the data
                 await dispatch(fetchData(0));
             }
-            console.log(data, "initial rows");
 
         } catch (err) {
             console.error(err.message);

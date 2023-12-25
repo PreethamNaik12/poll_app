@@ -7,5 +7,6 @@ import TableLoader from './Loaders/TableLoader';
 import PollTopText from './Poll/PollTopText';
 import PollFrom from './Poll/PollFrom';
 import VoteSubmitLoader from './Loaders/VoteSubmitLoader';
+import StatusBar from './Common/StatusBar';
 
-export {ProgressBar, Navbar, Footer, HomeCTA, HomeTopText, TableLoader, PollTopText, PollFrom, VoteSubmitLoader};
+export { ProgressBar, Navbar, Footer, HomeCTA, HomeTopText, TableLoader, PollTopText, PollFrom, VoteSubmitLoader, StatusBar };
