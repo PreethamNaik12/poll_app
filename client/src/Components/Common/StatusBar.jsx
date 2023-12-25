@@ -27,7 +27,7 @@ const StatusBar = () => {
         <div>
             <Snackbar
                 open={open}
-                autoHideDuration={isOnline ? 6000 : 30000}
+                autoHideDuration={isOnline ? 6000 : null}
                 onClose={handleClose}
             >
                 <Alert severity={isOnline ? `success` : `error`} sx={{ width: '100%' }}>
