@@ -5,9 +5,17 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
+  Navigate 
 } from "react-router-dom";
 import { Footer, Navbar, ProgressBar, StatusBar } from "./Components/"
 import { Home, Events, About, Poll, PollCasted, Table, LineChart, BarChart, Visualize } from './Pages';
+import Login from './Components/Login';
+import Dashboard from './Components/Dashboard';
+
+const PrivateRoute = ({ children }) => {
+  const isAuthenticated = localStorage.getItem('access_token') !== null;
+  return isAuthenticated ? children : <Navigate to="/login" />;
+};
 
 const App = () => {
 
@@ -29,6 +37,16 @@ const App = () => {
             <Route exact path='/chartl' element={<LineChart />} />
             <Route exact path='/chartb' element={<BarChart />} />
             <Route exact path='/visualize' element={<Visualize />} />
+            <Route path="/login" element={<Login />} />
+            <Route 
+            path="/dashboard" 
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            } 
+          />
+        {/* <Route path="/" element={<Navigate to="/dashboard" />} /> */}
           </Routes>
         </Container>
         <Footer />
