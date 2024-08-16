@@ -1,6 +1,7 @@
+// src/services/api.js
 import axios from 'axios';
 
-const baseURL = 'https://stunning-telegram-gv76vvwgp6x2wj9w-8000.app.github.dev/api/';
+const baseURL = 'http://localhost:8000/api/';
 
 const api = axios.create({
     baseURL: baseURL,
@@ -24,9 +25,8 @@ api.interceptors.response.use(
     async (error) => {
         const originalRequest = error.config;
 
-        // If the error status is 401 and there is no originalRequest._retry flag,
-        // it means the token has expired and we need to refresh it
-        if (error.response.status === 401 && !originalRequest._retry) {
+        // Check if the error has a response before accessing status
+        if (error.response && error.response.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true;
 
             try {
@@ -36,12 +36,10 @@ api.interceptors.response.use(
                 if (response.status === 200) {
                     localStorage.setItem('access_token', response.data.access);
 
-                    // Retry the original request with the new token
                     originalRequest.headers['Authorization'] = 'Bearer ' + response.data.access;
                     return axios(originalRequest);
                 }
             } catch (refreshError) {
-                // If refresh token fails, logout the user...
                 console.error('Error refreshing token:', refreshError);
                 // Implement logout logic here
             }

@@ -11,6 +11,10 @@ import { Footer, Navbar, ProgressBar, StatusBar } from "./Components/"
 import { Home, Events, About, Poll, PollCasted, Table, LineChart, BarChart, Visualize } from './Pages';
 import Login from './Components/Login';
 import Dashboard from './Components/Dashboard';
+import Register from './Components/Register';
+import VerifyEmail from './Components/VerifyEmail';
+import CheckEmail from './Components/CheckEmail';
+import ResendVerification from './Components/ResendVerification';
 
 const PrivateRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem('access_token') !== null;
@@ -38,6 +42,10 @@ const App = () => {
             <Route exact path='/chartb' element={<BarChart />} />
             <Route exact path='/visualize' element={<Visualize />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/check-email" element={<CheckEmail />} />
+            <Route path="/verify-email/:token" element={<VerifyEmail />} />
+            <Route path="/reverify" element={<ResendVerification />} />
             <Route 
             path="/dashboard" 
             element={

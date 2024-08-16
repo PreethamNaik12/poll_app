@@ -28,9 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -97,6 +95,17 @@ CORS_ALLOW_ALL_ORIGINS = True  # Only use this for development!
 # ]
 
 ROOT_URLCONF = "myprojec.urls"
+
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Use your email provider's SMTP server
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "newsparashu@gmail.com"
+EMAIL_HOST_PASSWORD = "xvro uxsf phrh rygd"
+
+# Token expiration time
+EMAIL_TOKEN_EXPIRY = timedelta(hours=24)
 
 TEMPLATES = [
     {

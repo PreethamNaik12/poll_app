@@ -139,7 +139,7 @@ function ResponsiveAppBar() {
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
-                        <Link to='/poll'>
+                        <Link to='/login'>
                             <Button variant="contained" startIcon={<HowToVoteIcon sx={{ display: { xs: 'none', md: 'flex' } }} />}
                                 sx={{
                                     color: 'primary.dark',
@@ -150,7 +150,7 @@ function ResponsiveAppBar() {
                                         bgcolor: 'primary.dark',
                                         color: 'primary.contrastText',
                                     }
-                                }}>Vote</Button>
+                                }}>Login</Button>
                         </Link>
                     {/* <Tooltip title="Open settings">
                         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

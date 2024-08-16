@@ -4,14 +4,14 @@ import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
-    const [message, setMessage] = useState('');
+    const [message, setMessage] = useState({});
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await api.get('protected/');
-                setMessage(response.data.message);
+                const response = await api.get('myapp/protected/');
+                setMessage(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
                 if (error.response && error.response.status === 401) {
@@ -33,7 +33,8 @@ const Dashboard = () => {
     return (
         <div>
             <h2>Dashboard</h2>
-            <p>{message}</p>
+            <p>{message.message}</p>
+            <p>{message.user}</p>
             <button onClick={handleLogout}>Logout</button>
         </div>
     );
